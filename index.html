@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -89,30 +88,60 @@
       text-align: center;
       color: var(--cream);
       font-family: 'Playfair Display', serif;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
     }
 
-    .birthday-message h2 {
-      font-size: 2.5rem;
-      animation: fadeInScale 2s ease forwards;
+    .birthday-message .click-text {
+      font-size: 2rem;
+      animation: pulse 2s infinite;
     }
 
-    .birthday-message p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      opacity: 0;
-      animation: fadeIn 2s 1.5s ease forwards;
+    .birthday-content, .cake, .hearts {
+      display: none;
+    }
+
+    .birthday-message.clicked .click-text {
+      display: none;
+    }
+
+    .birthday-message.clicked .birthday-content {
+      display: block;
+      animation: fadeInScale 1s ease forwards;
+    }
+
+    .birthday-message.clicked .cake {
+      display: block;
+      font-size: 6rem;
+      margin-top: 2rem;
+      animation: pop 1s ease forwards;
+    }
+
+    .birthday-message.clicked .hearts {
+      display: block;
+      font-size: 3rem;
+      margin-top: 2rem;
+      animation: floatHearts 2s ease-in-out infinite;
     }
 
     @keyframes fadeInScale {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
     .final-message {
@@ -132,7 +161,7 @@
 
   <section class="segment">
     <img src="1.png" alt="Pic 1">
-    <div class="quote">Whatever our souls are made of, his and mine are the same.</div>
+    <div class="quote">Whatever our souls are made of, her and mine are the same.</div>
   </section>
 
   <section class="segment">
@@ -140,9 +169,14 @@
     <div class="quote">You have bewitched me body and soul, and I love, I love, I love you.</div>
   </section>
 
-  <section class="birthday-message">
-    <h2>Happy 20th Birthday Poulami</h2>
-    <p>I miss you. I love you as always.</p>
+  <section class="birthday-message" onclick="this.classList.add('clicked')">
+    <div class="click-text">🎉 Click me 🎉</div>
+    <div class="birthday-content">
+      <h2>Happy 20th Birthday Poulami</h2>
+      <p>I miss you. I love you as always.</p>
+    </div>
+    <div class="cake">🎂🎂🎂</div>
+    <div class="hearts">❤️❤️❤️❤️❤️</div>
   </section>
 
   <section class="segment">
