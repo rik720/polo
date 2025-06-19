@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f6f1eb;
+      --sand: #e4d5c7;
+      --rose: #c8a99e;
+      --deep-brown: #2f2424;
+      --accent: #8c5f58;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--deep-brown);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--sand), var(--cream));
+      padding: 4rem 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+    }
+
+    .segment {
+      padding: 6rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(60px) scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .segment.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .segment img {
+      width: 70%;
+      max-width: 500px;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.6s ease;
+    }
+
+    .segment img:hover {
+      transform: scale(1.02);
+    }
+
+    .quote {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-top: 1rem;
+      color: var(--accent);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .birthday-message {
+      padding: 6rem 2rem;
+      background: var(--rose);
+      text-align: center;
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .birthday-message h2 {
+      font-size: 2.5rem;
+      animation: fadeInScale 2s ease forwards;
+    }
+
+    .birthday-message p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 2s 1.5s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .final-message {
+      background: var(--sand);
+      padding: 5rem 2rem;
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--deep-brown);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>For the One I Love</h1>
+  </header>
+
+  <section class="segment">
+    <img src="1.png" alt="Pic 1">
+    <div class="quote">Whatever our souls are made of, his and mine are the same.</div>
+  </section>
+
+  <section class="segment">
+    <img src="2.jpeg" alt="Pic 2">
+    <div class="quote">You have bewitched me body and soul, and I love, I love, I love you.</div>
+  </section>
+
+  <section class="birthday-message">
+    <h2>Happy 20th Birthday Poulami</h2>
+    <p>I miss you. I love you as always.</p>
+  </section>
+
+  <section class="segment">
+    <img src="3.jpeg" alt="Pic 3">
+    <div class="quote">You are my heart, my life, my one and only thought.</div>
+  </section>
+
+  <section class="segment">
+    <img src="4.jpeg" alt="Pic 4">
+    <div class="quote">In your smile, I see something more beautiful than stars.</div>
+  </section>
+
+  <div class="final-message">
+    I will love you always.<br>
+    Yours forever,<br>
+    <strong>Rik</strong>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.segment').forEach(seg => {
+      observer.observe(seg);
+    });
+  </script>
+</body>
+</html>
